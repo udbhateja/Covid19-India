@@ -8,26 +8,23 @@
 
 import Foundation
 
-struct Cases: Codable, Identifiable {
-
-    let id = UUID()
+struct Cases_National: CaseStats, Codable, Identifiable {
     
     var active          : String?
     var confirmed       : String?
     var recovered       : String?
     var deaths          : String?
-    
     var deltaConfirmed  : String?
     var deltaDeaths     : String?
     var deltaRecovered  : String?
     var deltaActive     : String?
     
+    let id = UUID()
+    
     var state           : String?
     var stateCode       : String?
     
     var lastupdated     : String?
-    
-  
     
     mutating func format() {
         var newActive = 0

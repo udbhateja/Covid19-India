@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Request
 class NationalLevelServiceRequest {
     
-    typealias NationalLevelServiceRequest_Callback = ( ([Cases]?, String?) -> () )
+    typealias NationalLevelServiceRequest_Callback = ( ([Cases_National]?, String?) -> () )
     private let manager = WebServiceManager(url: WebServiceURL.nationalLevel, parameters: [:])
     
     func get(completion: @escaping NationalLevelServiceRequest_Callback) {
@@ -32,11 +32,11 @@ class NationalLevelServiceRequest {
         manager.get()
     }
     
-    private func decode(json: [[String: Any]]) -> [Cases]? {
+    private func decode(json: [[String: Any]]) -> [Cases_National]? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .useDefaultKeys
         if let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
-            let data = try? decoder.decode([Cases].self, from: jsonData)
+            let data = try? decoder.decode([Cases_National].self, from: jsonData)
             return data
         }
         return nil
@@ -49,15 +49,15 @@ class NationalLevelData {
     private static let shared = NationalLevelData()
     
     private var request : NationalLevelServiceRequest = NationalLevelServiceRequest()
-    private var cases   : [Cases]? {
+    private var cases   : [Cases_National]? {
         didSet {
             totalSummary    = cases?.first
             statesData      = Array(cases?[1...] ?? [])
         }
     }
     
-    var totalSummary    : Cases?
-    var statesData      : [Cases]?
+    var totalSummary    : Cases_National?
+    var statesData      : [Cases_National]?
     
     class func get(completion: @escaping ( (NationalLevelData) -> ()) ) {
         let shared = NationalLevelData.shared

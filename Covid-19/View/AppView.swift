@@ -13,12 +13,12 @@ struct AppView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "phone.fill")
+                    Image(systemName: "house")
                     Text("Home")
             }
             StateListView()
                 .tabItem {
-                    Image(systemName: "tv.fill")
+                    Image(systemName: "list.bullet")
                     Text("States")
             }
         }

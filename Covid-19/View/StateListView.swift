@@ -18,7 +18,7 @@ struct StateListView: View {
     }
     
     // MARK: State Variables
-    @State private var cases: [Cases] = []
+    @State private var cases: [Cases_National] = []
     
     // MARK: Body
     var body: some View {
@@ -33,7 +33,7 @@ struct StateListView: View {
                 ) {
                     ForEach(cases.indices) { index in
                         ZStack {
-                            NavigationLink(destination: StateView()) {
+                            NavigationLink(destination: self.stateView(for: index)) {
                                 StateListItem(
                                     state       : self.item(index: index).state ?? "-",
                                     confirmed   : self.item(index: index).confirmed ?? "-",
@@ -56,8 +56,13 @@ struct StateListView: View {
     }
     
     // MARK: Private functions
-    private func item(index: Int) -> Cases {
+    private func item(index: Int) -> Cases_National {
         return cases[index]
+    }
+    
+    private func stateView(for index: Int) -> StateView {
+        StateView(stateCode     : cases[index].stateCode ?? "",
+                  lastUpdated   : cases[index].lastupdated ?? "")
     }
 }
 

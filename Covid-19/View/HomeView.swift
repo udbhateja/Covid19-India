@@ -12,7 +12,7 @@ import SwiftUI
 struct HomeView: View {
     
     // MARK: State Variables
-    @State private var cases: Cases?
+    @State private var cases: Cases_National?
     
     // MARK: Private Variables
     private var items: [HomeItemView] {
@@ -47,30 +47,13 @@ struct HomeView: View {
         ]
     }
     
-    private var lastUpdated: String {
-        if let lastupdated = cases?.lastupdated {
-            let dateFormatter = DateFormatter()
-            
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-            let date = dateFormatter.date(from: lastupdated)
-            
-            dateFormatter.dateFormat = "dd MMM, HH:mm"
-            let formattedDate = dateFormatter.string(from: date!) + " IST"
-            
-            return "Last Updated: \(formattedDate)"
-        }
-        return ""
-    }
-    
     private var request: NationalLevelServiceRequest = NationalLevelServiceRequest()
     
     // MARK: Body
     var body: some View {
         
         VStack {
-            
             VStack {
-                HeaderView()
                 HStack(alignment: .center, spacing: 10.0) {
                     items[0]
                     items[1]
@@ -82,7 +65,7 @@ struct HomeView: View {
             }
             .padding(.bottom, 24.0)
             
-            Text(lastUpdated)
+            Text(CommonUtils.format(lastUpdated: cases?.lastupdated ?? ""))
                 .italic()
                 .fontWeight(.light)
                 .font(.system(size: 12.0))

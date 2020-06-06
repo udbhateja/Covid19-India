@@ -10,7 +10,10 @@ import Foundation
 
 struct WebServiceURL {
     static let base = "https://api.covid19india.org/"
-    static let nationalLevel = base + "data.json"
+    
+    static let nationalLevel    = base + "data.json"
+    static let stateLevel       = base + "v2/state_district_wise.json"
+    static let testing          = base + "state_test_data.json"
 }
 
 
