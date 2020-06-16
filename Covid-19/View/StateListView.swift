@@ -29,7 +29,7 @@ struct StateListView: View {
                         font: Font.custom("Copperplate-Bold", size: 12.0),
                         alignment: .leading)
                         .padding(10.0)
-                        .frame(minHeight:40.0)
+                        .frame(minHeight:50.0)
                 ) {
                     ForEach(cases.indices) { index in
                         ZStack {
@@ -40,7 +40,9 @@ struct StateListView: View {
                                     active      : self.item(index: index).active ?? "-",
                                     recovered   : self.item(index: index).recovered ?? "-",
                                     deceased    : self.item(index: index).deaths ?? "-"
-                                ).padding(10.0)
+                                )
+                                    .padding(10.0)
+                                    .frame(minHeight: 45.0)
                             }.padding(.trailing, -32.0)
                         }.listRowBackground((index  % 2 == 0) ? Color.gray.opacity(0.10) : Color.white)
                     }
@@ -88,7 +90,7 @@ struct StateListItem: View {
                 Text(self.state)
                     .font(self.font)
                     .frame(width: metrics.size.width * 0.40, alignment: .leading)
-                    .lineLimit(5)
+                    .lineLimit(6)
                     .fixedSize(horizontal: false, vertical: true)
                 
                 Text(self.confirmed)

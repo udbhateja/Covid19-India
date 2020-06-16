@@ -25,6 +25,8 @@
 		787A15DA245EBA12006F1550 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A15D9245EBA12006F1550 /* StateView.swift */; };
 		787E054524640BE300D8EB97 /* StateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787E054424640BE300D8EB97 /* StateListView.swift */; };
 		78A4C4F9246ECE5F00373737 /* StateLevelServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4C4F8246ECE5E00373737 /* StateLevelServiceRequest.swift */; };
+		78DEE2F82498ADDF00FCF8E5 /* Stats_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE2F72498ADDF00FCF8E5 /* Stats_Test.swift */; };
+		78DEE2FA2498AEDB00FCF8E5 /* StateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DEE2F92498AEDB00FCF8E5 /* StateHeaderView.swift */; };
 		78E10DC8248BCACC006A11ED /* TestingLevelServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E10DC7248BCACC006A11ED /* TestingLevelServiceRequest.swift */; };
 		78E10DCA248BCC66006A11ED /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E10DC9248BCC66006A11ED /* CommonUtils.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,8 @@
 		787A15D9245EBA12006F1550 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		787E054424640BE300D8EB97 /* StateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateListView.swift; sourceTree = "<group>"; };
 		78A4C4F8246ECE5E00373737 /* StateLevelServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLevelServiceRequest.swift; sourceTree = "<group>"; };
+		78DEE2F72498ADDF00FCF8E5 /* Stats_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats_Test.swift; sourceTree = "<group>"; };
+		78DEE2F92498AEDB00FCF8E5 /* StateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateHeaderView.swift; sourceTree = "<group>"; };
 		78E10DC7248BCACC006A11ED /* TestingLevelServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingLevelServiceRequest.swift; sourceTree = "<group>"; };
 		78E10DC9248BCC66006A11ED /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 		EE8EB029038522FDD339097C /* Pods-Covid-19.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19.release.xcconfig"; path = "Target Support Files/Pods-Covid-19/Pods-Covid-19.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				7815A239245DAE5800F426AB /* HomeHeaderView.swift */,
 				787E054424640BE300D8EB97 /* StateListView.swift */,
 				787A15D9245EBA12006F1550 /* StateView.swift */,
+				78DEE2F92498AEDB00FCF8E5 /* StateHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				78116A5C248B85F0000D036A /* CaseStats.swift */,
 				7815A241245DB35B00F426AB /* Cases_National.swift */,
 				78116A5E248B9856000D036A /* Cases_State.swift */,
+				78DEE2F72498ADDF00FCF8E5 /* Stats_Test.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,8 +337,10 @@
 				7815A242245DB35B00F426AB /* Cases_National.swift in Sources */,
 				7815A235245D940F00F426AB /* WebServiceManager.swift in Sources */,
 				78E10DC8248BCACC006A11ED /* TestingLevelServiceRequest.swift in Sources */,
+				78DEE2F82498ADDF00FCF8E5 /* Stats_Test.swift in Sources */,
 				7849749D2459B7E9009019B2 /* SceneDelegate.swift in Sources */,
 				787E054524640BE300D8EB97 /* StateListView.swift in Sources */,
+				78DEE2FA2498AEDB00FCF8E5 /* StateHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

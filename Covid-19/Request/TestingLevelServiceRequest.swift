@@ -11,17 +11,17 @@ import Foundation
 class TestingDataServiceRequest {
     
     private let manager = WebServiceManager(url: WebServiceURL.testing, parameters: [:])
-    typealias TestingDataServiceRequest_Callback = ( ([Cases_State]?, String?) -> () )
+    typealias TestingDataServiceRequest_Callback = ( ([Stats_Test]?, String?) -> () )
     
-    func getFor(state: String, completion: @escaping TestingDataServiceRequest_Callback) {
+    func get(completion: @escaping TestingDataServiceRequest_Callback) {
         
         manager.onCompletion = {
             [weak self] response in
             
             if let json = response,
                 let stateData = json["states_tested_data"] as? [[String: Any]] {
-                let cases = self?.decode(json: stateData)
-                print("")
+                let stats = self?.decode(json: stateData)
+                completion(stats, nil)
             }
         }
         manager.onError = {
@@ -31,11 +31,11 @@ class TestingDataServiceRequest {
         manager.get()
     }
     
-    private func decode(json: [[String: Any]]) -> [Cases_State]? {
+    private func decode(json: [[String: Any]]) -> [Stats_Test]? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .useDefaultKeys
         if let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
-            let data = try? decoder.decode([Cases_State].self, from: jsonData)
+            let data = try? decoder.decode([Stats_Test].self, from: jsonData)
             return data
         }
         return nil
@@ -48,26 +48,24 @@ class TestingData {
     
     private static let shared = TestingData()
     
-    private var request : TestingDataServiceRequest = TestingDataServiceRequest()
-    private var cases   : [Cases_National]? {
-        didSet {
-            totalSummary    = cases?.first
-            statesData      = Array(cases?[1...] ?? [])
-        }
+    private var request     : TestingDataServiceRequest = TestingDataServiceRequest()
+    private var allStats    : [Stats_Test]?
+    
+    private func dataFor(state: String) -> Stats_Test?  {
+        let stateStats = allStats?.filter({$0.state == state})
+        return stateStats?.last
     }
     
-    var totalSummary    : Cases_National?
-    var statesData      : [Cases_National]?
-    
-    class func get(completion: @escaping ( (TestingData) -> ()) ) {
+    class func dataFor(state: String, completion: @escaping ( (Stats_Test?) -> ())) {
         let shared = TestingData.shared
-        guard shared.cases == nil else {
-            completion(shared)
+        guard shared.allStats == nil else {
+            completion(shared.dataFor(state: state))
             return
         }
         
-        shared.request.getFor(state: "") { (cases, error) in
-            print(cases)
+        shared.request.get() { (cases, error) in
+            shared.allStats = cases
+            completion(shared.dataFor(state: state))
         }
     }
 }
